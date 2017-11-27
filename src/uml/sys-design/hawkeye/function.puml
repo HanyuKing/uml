@@ -1,0 +1,15 @@
+@startuml
+
+:Developer/Manager : as People
+
+(Start CPU) as (CPU)
+(Start IO) as (IO)
+(Start Memory) as (Memory)
+
+
+People --> CPU
+People --> IO
+People --> Memory
+
+
+@enduml
