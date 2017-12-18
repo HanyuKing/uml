@@ -1,0 +1,51 @@
+@startuml
+title PromoList-Detail-Class-Diagram
+scale 1
+
+interface PromotionFunction {
+    +queryPromoInfo(PromoQuery query) : PromoInfo
+    +queryPromoWares(PromoWareQuery query) : List<Ware>
+    +listButtons(PromoQuery query) : List<Button>
+}
+
+abstract class Promotion {
+    #queryPromoInfo(PromoQuery query) : PromoInfo
+    ..
+    #listButtons_2(PromoQuery query) : List<Button>
+    #queryPromoWares_2(PromoWareQuery query) : List<Ware>
+
+}
+
+class DanPinPromotion
+class ZengPinPromotion
+class ManJianPromotion
+class ManZengPromotion
+
+class PromotionFactory {
+    +getPromotion(Integer promoType) : Promotion
+}
+
+PromotionFunction <|.. Promotion : implement
+
+Promotion <|-- DanPinPromotion : extend
+Promotion <|-- ZengPinPromotion : extend
+Promotion <|-- ManJianPromotion : extend
+Promotion <|-- ManZengPromotion : extend
+
+PromotionFactory .right.> Promotion : dependent
+
+class PromoBaseInfo
+class DanPinInfo
+class ZengPinInfo
+class ManJianInfo
+class ManZengInfo
+
+
+Promotion .right.> PromoBaseInfo : depengent
+DanPinInfo -up-|> PromoBaseInfo : extend
+ZengPinInfo -up-|> PromoBaseInfo : extend
+ManJianInfo -up-|> PromoBaseInfo : extend
+ManZengInfo -up-|> PromoBaseInfo : extend
+
+
+@enduml
