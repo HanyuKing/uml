@@ -1,7 +1,31 @@
 @startuml
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+scale 1
+activate Producer
+Producer -> RedisUtil : 获取自增ID
+activate RedisUtil
+Producer <-- RedisUtil : 返回自增ID
+deactivate RedisUtil
+Producer --> Consumer : 签到信息
+deactivate Producer
+activate Consumer
+Consumer -> RedisUtil : 是否已维护商家用户关系
+activate RedisUtil
+Consumer <-- RedisUtil : true or false
+deactivate RedisUtil
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+alt true
+    Consumer -> RedisUtil : 设置已经维护商家用户关系
+    activate RedisUtil
+    Consumer <-- RedisUtil : 结果
+    deactivate RedisUtil
+    activate DAO
+    Consumer -> DAO : 保存商家用户关系
+    Consumer <-- DAO : 结果
+    deactivate DAO
+    deactivate Consumer
+
+else false: nothing
+
+end
+
 @enduml
