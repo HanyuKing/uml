@@ -9,6 +9,9 @@ interface PromotionFunction {
 }
 
 abstract class Promotion {
+    -WareService wareService;
+    -PromoService promoService;
+    ..
     #queryPromoInfo(PromoQuery query) : PromoInfo
     ..
     #listButtons_2(PromoQuery query) : List<Button>
