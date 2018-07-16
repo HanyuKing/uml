@@ -50,5 +50,13 @@ ZengPinInfo -up-|> PromoBaseInfo : extend
 ManJianInfo -up-|> PromoBaseInfo : extend
 ManZengInfo -up-|> PromoBaseInfo : extend
 
+note top of PromotionFactory : 促销工厂
+note bottom of DanPinPromotion : 单品促销
+note bottom of ZengPinPromotion : 赠品促销
+note bottom of ManJianPromotion : 满减促销
+note bottom of ManZengPromotion : 满赠促销
+note right of PromoBaseInfo : 各种促销信息
+note right of PromotionFunction : 各种促销的功能
+
 
 @enduml

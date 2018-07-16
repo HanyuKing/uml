@@ -1,0 +1,16 @@
+@startuml
+
+:商家: as vender
+[//<<SoftWare System>>//\n　　促销SHOP] as promoShop
+[//<<SoftWare System>>//\n　　商品SHOP] as wareShop
+[//<<SoftWare System>>//\n　　商品中心] as wareCenter
+[//<<SoftWare System>>//\n　　预约/预售中心] as preCenter
+
+vender ..> promoShop : Use
+vender ..> wareShop : Use
+
+wareShop .left.>  wareCenter : read/write //<<JSF>>//
+promoShop ..> preCenter : read/write //<<JSF>>//
+wareCenter ..> preCenter : read //<<JSF>>//
+
+@enduml

@@ -1,0 +1,15 @@
+@startuml
+scale 1
+
+start
+fork
+:Task 1;
+fork again
+:Task 2;
+fork again
+: ...;
+fork again
+:Task N;
+end fork
+stop
+@enduml
